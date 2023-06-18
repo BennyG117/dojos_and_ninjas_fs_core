@@ -20,14 +20,13 @@
     </style>
     <title>Dojo Show</title>
 </head>
-
-<body class="bg-dark text-light d-flex justify-content-start">
+<!--! want to increase the width of the body-->
+<body class="bg-dark text-light d-flex justify-content-start container-xxl">
     <div class="flex-column ">
         <div>
-            <!--! Need correct jinja to target specific dojo and its name-->
-            <h1>{{dojo.id.name}} Ninjas</h1>
+            <h1 class="text-capitalize">{{dojos.name}} Ninjas</h1>
         </div>
-        <div>
+        <div class="mb-5">
             <table
                 class="table container table-dark table-hover table-striped rounded border border-1 border-light mt-5 text-capitalize table-bordered">
     
@@ -39,9 +38,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in users %}
+                    {% for i in ninjas %}
                     <tr>
-                        <!--! Need correct jinja to target specific ninjas from dojo that's been select-->
                         <td>{{ i.first_name }}</td>
                         <td>{{ i.last_name }}</td>
                         <td>{{ i.age }}</td>
@@ -51,9 +49,8 @@
             </table>
         </div>
             <div>
-                <!--! Need correct href file path to home page below: -->
                 <div>
-                    <a href="/dojos">Home</a>
+                    <a href="/">Home</a>
                 </div>
             </div>
         </div>

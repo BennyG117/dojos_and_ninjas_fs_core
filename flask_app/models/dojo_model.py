@@ -11,6 +11,7 @@ class Dojo:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+    #method to view a list of all dojos
     @classmethod
     def get_all(cls):
         query = """
@@ -18,8 +19,8 @@ class Dojo:
         FROM dojos;
         """
         results = connectToMySQL(cls.DB).query_db(query)
-        #! use to check if working...
-        # print(results)
+        # use to check if working...
+        print(results)
 
         dojos = []
 
@@ -30,7 +31,7 @@ class Dojo:
 
     #method to save & add new Dojo
     @classmethod
-    def create_dojo(cls, data):
+    def save_dojo(cls, data):
         query = """INSERT INTO dojos (name)
         VALUES (%(name)s);
         """
@@ -38,3 +39,23 @@ class Dojo:
         result = connectToMySQL(cls.DB).query_db(query, data)
         return result
     
+    #delete method for dojos
+    @classmethod
+    def delete(cls, data):
+        query = """DELETE FROM dojos 
+        WHERE id = %(id)s"""
+
+
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        return result
+
+    #method to get one dojo
+    @classmethod
+    def get_one(cls, data):
+        query = """SELECT * 
+        FROM dojos
+        WHERE id = %(id)s;"""
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        singleDojo = cls(results[0])
+        
+        return singleDojo

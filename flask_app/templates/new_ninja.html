@@ -21,47 +21,44 @@
     <title>new_ninja</title>
 </head>
 
-<body class="bg-dark text-light d-flex justify-content-start">
+<body class="bg-dark text-light d-flex justify-content-start container-xxl">
     <div class="flex-column ">
-        <!-- left column -->
-        <h1>New Ninja</h1>
+        <h1 class="mb-5">New Ninja</h1>
         <div>
-            <div>
-                <label for="name">Dojo: </label>
-                <!--! make this a select option box with options from the DB-->
-                <select onchange="FUNCTION_NAME_HERE(this)">
-                    {% for i in all_dojos %}
-                    <option>{{ i.name }}</option>
-                    {% endfor %}
-                </select>
-                <input type="text"
-                    name="name">
-            </div>
-            <div>
-                <label for="name">First Name: </label>
-                <input type="text"
-                    name="name">
-            </div>
-            <div>
-                <label for="name">Last Name: </label>
-                <input type="text"
-                    name="name">
-            </div>
-            <div>
-                <label for="name">Age: </label>
-                <input type="int"
-                    name="name">
-            </div>
-            <div>
-                <!--! adjust file path to have buttn click add the typed in new Ninja Name from above-->
-                <input type="submit"
-                    value="Create"
-                    class="btn btn-light">
-            </div>
-            <div>
-                <!--! Need correct href file path to home page below: -->
+            <!--! can't get input boxes to have justify-content-between-->
+            <form action="/newNinja/save" method="POST" class="d-flex flex-column">
+                <div class="justify-content-between">
+                    <label for="name">Dojo: </label>
+                    <select name="dojo_id" class="text-capitalize mb-2">
+                        {% for i in all_dojos %}
+                        <option value="{{i.id}}">{{ i.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 <div>
-                    <a href="/dojos">Home</a>
+                    <label for="name" class="mb-2">First Name: </label>
+                    <input type="text"
+                        name="first_name">
+                </div>
+                <div>
+                    <label for="name" class="mb-2">Last Name: </label>
+                    <input type="text"
+                        name="last_name">
+                </div>
+                <div>
+                    <label for="name" class="mb-2">Age: </label>
+                    <input type="int"
+                        name="age">
+                </div>
+                <div>
+                    <input type="submit"
+                        value="Create"
+                        class="btn btn-light mb-2">
+                </div>
+            </form>
+            <div>
+                <div>
+                    <a href="/">Home</a>
                 </div>
             </div>
         </div>
