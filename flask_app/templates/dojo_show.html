@@ -24,7 +24,8 @@
 <body class="bg-dark text-light d-flex justify-content-start container-xxl">
     <div class="flex-column ">
         <div>
-            <h1 class="text-capitalize">{{dojos.name}} Ninjas</h1>
+            <!-- refer to name from app route (show_ninjas)-->
+            <h1 class="text-capitalize">{{dojo.name}} Ninjas</h1>
         </div>
         <div class="mb-5">
             <table
@@ -38,7 +39,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for i in ninjas %}
+                    <!-- refer to show_ninjas app route-->
+                    {% for i in dojo.all_ninjas %}
                     <tr>
                         <td>{{ i.first_name }}</td>
                         <td>{{ i.last_name }}</td>
